@@ -17,12 +17,14 @@ datasource db {
 model User {
   id        String    @id @default(uuid())
   name      String  
-  email     String    @unique()
+  email     String    @unique
   password  String    
-  Role      Roles
+  role      Role
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
-enum Roles {
+enum Role {
   ADMIN
   USER
 }

@@ -8,7 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DatabaseService = void 0;
 const common_1 = require("@nestjs/common");
-let DatabaseService = class DatabaseService {
+const client_1 = require("@prisma/client");
+let DatabaseService = class DatabaseService extends client_1.PrismaClient {
+    async onModuleInit() {
+        await this.$connect();
+    }
+    async onModuleDestroy() {
+        await this.$disconnect();
+    }
 };
 exports.DatabaseService = DatabaseService;
 exports.DatabaseService = DatabaseService = __decorate([
