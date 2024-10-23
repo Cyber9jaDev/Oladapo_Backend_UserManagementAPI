@@ -5,5 +5,5 @@ export declare class UserController {
     private readonly userService;
     constructor(userService: UserService);
     findOne(id: string): Promise<UserResponseDto>;
-    findAll(page?: number, limit?: number, dateFrom?: string, dateTo?: string, role?: Role): Promise<UserResponseDto[]>;
+    findAll(page?: string, limit?: string, dateFrom?: string, dateTo?: string, role?: Role): Promise<UserResponseDto[]>;
 }

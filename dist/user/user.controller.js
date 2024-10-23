@@ -24,7 +24,19 @@ let UserController = class UserController {
         return this.userService.findOne(id);
     }
     async findAll(page, limit, dateFrom, dateTo, role) {
-        return this.userService.findAll();
+        const createdAt = dateFrom || dateTo
+            ? {
+                ...(dateFrom && { gte: new Date(parseInt(dateFrom)) }),
+                ...(dateTo && { lte: new Date(parseInt(dateTo)) }),
+            }
+            : undefined;
+        const filter = {
+            ...(createdAt && { createdAt }),
+        };
+        const take = limit ? Math.max(1, parseInt(limit)) : 10;
+        const page_ = page ? Math.max(1, parseInt(page)) : 1;
+        const skip = (page_ - 1) * take;
+        return await this.userService.findAll(filter, take, skip);
     }
 };
 exports.UserController = UserController;
@@ -43,7 +55,7 @@ __decorate([
     __param(3, (0, common_1.Query)('dateTo')),
     __param(4, (0, common_1.Query)('role')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Number, String, String, String]),
+    __metadata("design:paramtypes", [String, String, String, String, String]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "findAll", null);
 exports.UserController = UserController = __decorate([

@@ -26,8 +26,11 @@ let UserService = class UserService {
         }
         return user;
     }
-    async findAll() {
-        return this.databaseService.user.findMany({
+    async findAll(filter, take, skip) {
+        return await this.databaseService.user.findMany({
+            where: filter,
+            take,
+            skip,
             select: { id: true, name: true, email: true, role: true },
         });
     }

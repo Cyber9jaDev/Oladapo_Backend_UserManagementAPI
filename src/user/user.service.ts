@@ -2,6 +2,15 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
 import { UserResponseDto } from './dtos/user.dto';
 
+interface Filter{
+  createdAt?: {
+    gte?: Date;
+    lte?: Date;
+  },
+  dateFrom?: Date,
+  dateTo?: Date
+}
+
 @Injectable()
 export class UserService {
   constructor(private readonly databaseService: DatabaseService) {}
@@ -17,8 +26,11 @@ export class UserService {
     return user;
   }
 
-  async findAll(): Promise<UserResponseDto[]> {
-    return this.databaseService.user.findMany({
+  async findAll(filter: Filter, take: number, skip: number): Promise<UserResponseDto[]> {
+    return await this.databaseService.user.findMany({
+      where: filter,
+      take,
+      skip,
       select: { id: true, name: true, email: true, role: true },
     });
   }
