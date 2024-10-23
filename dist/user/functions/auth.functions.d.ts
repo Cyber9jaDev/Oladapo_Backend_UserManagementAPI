@@ -1,1 +1,2 @@
-export declare function generateJWT(userId: string, email: string): Promise<string>;
+import { User } from '../interface/auth.interface';
+export declare function generateToken(user: User): Promise<string>;
