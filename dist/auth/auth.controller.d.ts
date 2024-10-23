@@ -1,6 +1,6 @@
-import { AuthService } from './auth.service';
-import { LoginDto, RegisterDto } from '../dtos/auth.dto';
 import { Role } from '@prisma/client';
+import { LoginDto, RegisterDto } from './dtos/auth.dto';
+import { AuthService } from './auth.service';
 export declare class AuthController {
     private readonly authService;
     constructor(authService: AuthService);

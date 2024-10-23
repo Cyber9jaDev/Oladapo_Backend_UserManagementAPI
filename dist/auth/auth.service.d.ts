@@ -1,5 +1,5 @@
 import { DatabaseService } from 'src/database/database.service';
-import { AuthParams } from '../interface/auth.interface';
+import { AuthParams } from './interface/auth.interface';
 export declare class AuthService {
     private readonly databaseService;
     constructor(databaseService: DatabaseService);
