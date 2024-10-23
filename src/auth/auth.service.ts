@@ -5,10 +5,9 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
-import { AuthParams, JWTPayload, User } from '../interface/auth.interface';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
-// import { generateToken } from '../functions/auth.functions';
+import { AuthParams, JWTPayload, User } from './interface/auth.interface';
 
 @Injectable()
 export class AuthService {
