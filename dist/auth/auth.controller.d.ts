@@ -6,17 +6,17 @@ export declare class AuthController {
     constructor(authService: AuthService);
     register({ name, email, password }: RegisterDto, role: Role): Promise<{
         token: string;
-        id: string;
         name: string;
         email: string;
+        id: string;
         role: import(".prisma/client").$Enums.Role;
     }>;
     login({ email, password }: LoginDto): Promise<{
         token: string;
-        id: string;
         name: string;
         email: string;
         password: string;
+        id: string;
         role: import(".prisma/client").$Enums.Role;
     }>;
 }
