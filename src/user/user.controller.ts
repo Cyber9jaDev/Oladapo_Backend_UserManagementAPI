@@ -1,9 +1,18 @@
-import { Body, Controller, Delete, Get, Param, Put, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { Role } from '@prisma/client';
 import { UpdateUserDto, UserResponseDto } from './dtos/user.dto';
 import { User } from './decorators/user.decorator';
 import { UserEntity } from './interface/user.interface';
+import { Roles } from 'src/decorators/roles.decorator';
 
 @Controller('users')
 export class UserController {
@@ -42,22 +51,17 @@ export class UserController {
   }
 
   @Put('/:id')
+  @Roles(Role.USER)
   async updateUser(
     @Param('id') id: string,
     @Body() updateUserDto: UpdateUserDto,
-    @User() user: UserEntity
+    @User() user: UserEntity,
   ): Promise<UserResponseDto> {
-    // Find the user if it exi
     return this.userService.updateUser(id, updateUserDto);
   }
 
-  @Delete('/id')
-  async deleteUser(
-    @Param("id") id: string,
-  ){
+  @Delete('/:id')
+  async deleteUser(@Param('id') id: string) {
     return this.userService.deleteUser(id);
   }
-
-
-
 }

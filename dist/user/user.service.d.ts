@@ -24,13 +24,7 @@ export declare class UserService {
         updatedAt: Date;
     }>;
     deleteUser(id: string): Promise<{
-        id: string;
-        email: string;
-        name: string;
-        password: string;
-        role: import(".prisma/client").$Enums.Role;
-        createdAt: Date;
-        updatedAt: Date;
+        message: string;
     }>;
 }
 export {};

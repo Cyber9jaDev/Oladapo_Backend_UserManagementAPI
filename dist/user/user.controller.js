@@ -18,6 +18,7 @@ const user_service_1 = require("./user.service");
 const client_1 = require("@prisma/client");
 const user_dto_1 = require("./dtos/user.dto");
 const user_decorator_1 = require("./decorators/user.decorator");
+const roles_decorator_1 = require("../decorators/roles.decorator");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
@@ -68,6 +69,7 @@ __decorate([
 ], UserController.prototype, "findAllUsers", null);
 __decorate([
     (0, common_1.Put)('/:id'),
+    (0, roles_decorator_1.Roles)(client_1.Role.USER),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __param(2, (0, user_decorator_1.User)()),
@@ -76,8 +78,8 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "updateUser", null);
 __decorate([
-    (0, common_1.Delete)('/id'),
-    __param(0, (0, common_1.Param)("id")),
+    (0, common_1.Delete)('/:id'),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)

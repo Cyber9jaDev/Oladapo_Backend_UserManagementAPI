@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
 import { UserResponseDto } from './dtos/user.dto';
 import { UpdateUserInterface } from './interface/user.interface';
@@ -46,18 +50,18 @@ export class UserService {
       data: { ...updateUserParams },
     });
 
-    if(!userUpdated) throw new BadRequestException()
+    if (!userUpdated) throw new BadRequestException();
 
-    return userUpdated
+    return userUpdated;
   }
 
-  async deleteUser(id: string){
+  async deleteUser(id: string) {
     const deletedUser = await this.databaseService.user.delete({
-      where: { id }
+      where: { id },
     });
 
-    if(!deletedUser) throw new BadRequestException()
+    if (!deletedUser) throw new BadRequestException();
 
-    return deletedUser
+    return { message: 'User deleted successfully' };
   }
 }

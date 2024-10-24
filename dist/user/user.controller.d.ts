@@ -9,12 +9,6 @@ export declare class UserController {
     findAllUsers(page?: string, limit?: string, dateFrom?: string, dateTo?: string, role?: Role): Promise<UserResponseDto[]>;
     updateUser(id: string, updateUserDto: UpdateUserDto, user: UserEntity): Promise<UserResponseDto>;
     deleteUser(id: string): Promise<{
-        id: string;
-        email: string;
-        name: string;
-        password: string;
-        role: import(".prisma/client").$Enums.Role;
-        createdAt: Date;
-        updatedAt: Date;
+        message: string;
     }>;
 }

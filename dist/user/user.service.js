@@ -45,11 +45,11 @@ let UserService = class UserService {
     }
     async deleteUser(id) {
         const deletedUser = await this.databaseService.user.delete({
-            where: { id }
+            where: { id },
         });
         if (!deletedUser)
             throw new common_1.BadRequestException();
-        return deletedUser;
+        return { message: 'User deleted successfully' };
     }
 };
 exports.UserService = UserService;
