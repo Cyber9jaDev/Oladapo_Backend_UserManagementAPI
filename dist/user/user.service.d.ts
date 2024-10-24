@@ -1,6 +1,6 @@
 import { DatabaseService } from '../database/database.service';
 import { UserResponseDto } from './dtos/user.dto';
-import { UpdateUserInterface } from './interface/user.interface';
+import { UpdateUserInterface, UserEntity } from './interface/user.interface';
 interface Filter {
     createdAt?: {
         gte?: Date;
@@ -14,7 +14,7 @@ export declare class UserService {
     constructor(databaseService: DatabaseService);
     findUser(id: string): Promise<UserResponseDto>;
     findAllUsers(filter: Filter, take: number, skip: number): Promise<UserResponseDto[]>;
-    updateUser(id: string, updateUserParams: UpdateUserInterface): Promise<{
+    updateUser(id: string, updateUserParams: UpdateUserInterface, user: UserEntity): Promise<{
         id: string;
         email: string;
         name: string;

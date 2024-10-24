@@ -19,12 +19,13 @@ export class AuthGuard implements CanActivate {
     private readonly databaseService: DatabaseService,
   ) {}
 
+  
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const requiredRoles = await this.reflector.getAllAndOverride('roles', [
       context.getHandler(),
       context.getClass(),
     ]);
-
+    
     // If no role assigned, go on and execute
     if (!requiredRoles || requiredRoles.length === 0) {
       return true;

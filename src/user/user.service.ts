@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
 import { UserResponseDto } from './dtos/user.dto';
-import { UpdateUserInterface } from './interface/user.interface';
+import { UpdateUserInterface, UserEntity } from './interface/user.interface';
 
 interface Filter {
   createdAt?: {
@@ -44,7 +44,7 @@ export class UserService {
     });
   }
 
-  async updateUser(id: string, updateUserParams: UpdateUserInterface) {
+  async updateUser(id: string, updateUserParams: UpdateUserInterface, user: UserEntity) {
     const userUpdated = await this.databaseService.user.update({
       where: { id },
       data: { ...updateUserParams },

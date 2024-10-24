@@ -34,7 +34,7 @@ let UserService = class UserService {
             select: { id: true, name: true, email: true, role: true },
         });
     }
-    async updateUser(id, updateUserParams) {
+    async updateUser(id, updateUserParams, user) {
         const userUpdated = await this.databaseService.user.update({
             where: { id },
             data: { ...updateUserParams },

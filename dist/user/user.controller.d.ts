@@ -8,7 +8,7 @@ export declare class UserController {
     findUser(id: string): Promise<UserResponseDto>;
     findAllUsers(page?: string, limit?: string, dateFrom?: string, dateTo?: string, role?: Role): Promise<UserResponseDto[]>;
     updateUser(id: string, updateUserDto: UpdateUserDto, user: UserEntity): Promise<UserResponseDto>;
-    deleteUser(id: string): Promise<{
+    deleteUser(id: string, user: UserEntity): Promise<{
         message: string;
     }>;
 }

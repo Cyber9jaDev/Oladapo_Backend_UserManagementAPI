@@ -6,6 +6,7 @@ import {
   Param,
   Put,
   Query,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { Role } from '@prisma/client';
@@ -57,12 +58,23 @@ export class UserController {
     @Body() updateUserDto: UpdateUserDto,
     @User() user: UserEntity,
   ): Promise<UserResponseDto> {
-    return this.userService.updateUser(id, updateUserDto);
+    if (id !== user.userId && user.role !== Role.ADMIN) {
+      throw new UnauthorizedException(
+        'You are not authorized to update this user',
+      );
+    }
+
+    return this.userService.updateUser(id, updateUserDto, user);
   }
 
   @Delete('/:id')
   @Roles(Role.ADMIN, Role.USER)
-  async deleteUser(@Param('id') id: string) {
+  async deleteUser(@Param('id') id: string, @User() user: UserEntity) {
+    if (id !== user.userId && user.role !== Role.ADMIN) {
+      throw new UnauthorizedException(
+        'You are not authorized to delete this account',
+      );
+    }
     return this.userService.deleteUser(id);
   }
 }

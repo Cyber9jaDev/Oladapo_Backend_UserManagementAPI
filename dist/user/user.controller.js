@@ -42,9 +42,15 @@ let UserController = class UserController {
         return await this.userService.findAllUsers(filter, take, skip);
     }
     async updateUser(id, updateUserDto, user) {
-        return this.userService.updateUser(id, updateUserDto);
+        if (id !== user.userId && user.role !== client_1.Role.ADMIN) {
+            throw new common_1.UnauthorizedException('You are not authorized to update this user');
+        }
+        return this.userService.updateUser(id, updateUserDto, user);
     }
-    async deleteUser(id) {
+    async deleteUser(id, user) {
+        if (id !== user.userId && user.role !== client_1.Role.ADMIN) {
+            throw new common_1.UnauthorizedException('You are not authorized to delete this account');
+        }
         return this.userService.deleteUser(id);
     }
 };
@@ -81,8 +87,9 @@ __decorate([
     (0, common_1.Delete)('/:id'),
     (0, roles_decorator_1.Roles)(client_1.Role.ADMIN, client_1.Role.USER),
     __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, user_decorator_1.User)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "deleteUser", null);
 exports.UserController = UserController = __decorate([
