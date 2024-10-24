@@ -1,3 +1,7 @@
+###
+# Postman Collection
+In the root directory, import [Oladapo_Backend_UserManagementAPI.postman_collection.json] file
+
 # User Management REST API
 
 A RESTful API for user management built with NestJS, Prisma ORM, and PostgreSQL (Supabase).

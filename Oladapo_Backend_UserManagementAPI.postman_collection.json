@@ -1,0 +1,575 @@
+{
+	"info": {
+		"_postman_id": "695b41a7-ff24-4883-b89f-e482437d1499",
+		"name": "Oladapo_Backend_UserManagementAPI",
+		"description": "User Management API Documentation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25907243"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Admin 3\",\r\n    \"email\": \"admin3@gmail.com\",\r\n    \"password\": \"Test@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/register/ADMIN",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"register",
+						"ADMIN"
+					]
+				},
+				"description": "To register as either a user, change the last param to USER instead of ADMIN"
+			},
+			"response": [
+				{
+					"name": "Register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Admin 3\",\r\n    \"email\": \"admin3@gmail.com\",\r\n    \"password\": \"Test@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/register/ADMIN",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"register",
+								"ADMIN"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "363"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"16b-7v1yuh2luHuI5XcOwSGwLvVuOQU\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 24 Oct 2024 12:58:24 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"6c25f412-8b33-40ca-a05f-5d61e6959987\",\n    \"name\": \"Admin 3\",\n    \"email\": \"admin3@gmail.com\",\n    \"role\": \"ADMIN\",\n    \"token\": \"\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"admin2@gmail.com\",\r\n    \"password\": \"Test@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin2@gmail.com\",\r\n    \"password\": \"Test@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "363"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"16b-GWqTC0pvqdoYCzir8oxNg8puc5M\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 24 Oct 2024 13:24:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"a61447a1-ed7c-456d-830f-e377292671a6\",\n    \"name\": \"Admin 2\",\n    \"email\": \"admin2@gmail.com\",\n    \"role\": \"ADMIN\",\n    \"token\": \"\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Find One User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/475e68da-816e-406e-bb7b-0f7a0e924c84",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"475e68da-816e-406e-bb7b-0f7a0e924c84"
+					]
+				},
+				"description": "Get a user record using their id"
+			},
+			"response": [
+				{
+					"name": "Find One User",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/475e68da-816e-406e-bb7b-0f7a0e924c84",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"475e68da-816e-406e-bb7b-0f7a0e924c84"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "104"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"68-UA9ZhGeGy038xFNgneyiKxdHwPY\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 24 Oct 2024 13:29:35 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"475e68da-816e-406e-bb7b-0f7a0e924c84\",\n    \"name\": \"User 1\",\n    \"email\": \"oladapo1@gmail.com\",\n    \"role\": \"USER\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Find All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users?limit=5&page=1&dateFrom=1579802087000&dateTo=1703354087000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "dateFrom",
+							"value": "1579802087000"
+						},
+						{
+							"key": "dateTo",
+							"value": "1703354087000"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Find All Users",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users?limit=5&page=1&dateFrom=1579802087000&dateTo=1703354087000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "dateFrom",
+									"value": "1579802087000"
+								},
+								{
+									"key": "dateTo",
+									"value": "1703354087000"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "238"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ee-Rtklz/ae2C9mZW45HCt0q9DP8ec\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 24 Oct 2024 13:31:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"69c83dbf-06d9-4df9-80f6-22759336b697\",\n        \"name\": \"Ayodeji Oladapo\",\n        \"email\": \"oladapo2@gmail.com\",\n        \"role\": \"ADMIN\"\n    },\n    {\n        \"id\": \"d85b6b7c-d0bd-423e-b79d-02b496789805\",\n        \"name\": \"Antelpf[[]e 10fdfd0shjs\",\n        \"email\": \"oladapo8@gmail.com\",\n        \"role\": \"USER\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjNDc5OWIwZi1iN2VkLTQ4ZTMtOTg5OS1lYzFkMjgxMzVkNjUiLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3Mjk3Njk5NzMsImV4cCI6MTcyOTg1NjM3M30.RhJEZAULebUviBPb-dphwM0wBkX3qmGSN3NtWD1yfF0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Solomon Adesanya\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/475e68da-816e-406e-bb7b-0f7a0e924c84",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"475e68da-816e-406e-bb7b-0f7a0e924c84"
+					]
+				},
+				"description": "ADMIN can update a user account\n\nUSER can update an account that belongs to him/her\n\nThe USER must be logged in to update an account and a bearer token is required to update an account"
+			},
+			"response": [
+				{
+					"name": "Update User",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Solomon Adesanya\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/475e68da-816e-406e-bb7b-0f7a0e924c84",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"475e68da-816e-406e-bb7b-0f7a0e924c84"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "114"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"72-nRSuAvVDjMZF3Q8IlOK3SjWLlrM\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 24 Oct 2024 13:49:37 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"475e68da-816e-406e-bb7b-0f7a0e924c84\",\n    \"name\": \"Solomon Adesanya\",\n    \"email\": \"oladapo1@gmail.com\",\n    \"role\": \"USER\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkODViNmI3Yy1kMGJkLTQyM2UtYjc5ZC0wMmI0OTY3ODk4MDUiLCJlbWFpbCI6Im9sYWRhcG84QGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzI5Nzc4MDM2LCJleHAiOjE3Mjk4NjQ0MzZ9.qPnCFPRIFjtCUdmIio5frL70AQ6ncjZIVJ1rQwPPClo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/d85b6b7c-d0bd-423e-b79d-02b496789805",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"d85b6b7c-d0bd-423e-b79d-02b496789805"
+					]
+				},
+				"description": "ADMIN can delete a user account\n\nUSER can delete an account that belongs to him/her\n\nThe USER must be logged in to delete an account and a bearer token is required to delete the account."
+			},
+			"response": [
+				{
+					"name": "Delete User",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/d85b6b7c-d0bd-423e-b79d-02b496789805",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"d85b6b7c-d0bd-423e-b79d-02b496789805"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "39"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"27-27o4zzUjhHNmthTJyia4gBCjpos\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 24 Oct 2024 13:54:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"User deleted successfully\"\n}"
+				}
+			]
+		}
+	]
+}
