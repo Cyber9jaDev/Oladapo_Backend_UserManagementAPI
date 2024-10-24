@@ -1,5 +1,6 @@
 import { DatabaseService } from '../database/database.service';
 import { UserResponseDto } from './dtos/user.dto';
+import { UpdateUserInterface } from './interface/user.interface';
 interface Filter {
     createdAt?: {
         gte?: Date;
@@ -11,8 +12,16 @@ interface Filter {
 export declare class UserService {
     private readonly databaseService;
     constructor(databaseService: DatabaseService);
-    findOne(id: string): Promise<UserResponseDto>;
-    findAll(filter: Filter, take: number, skip: number): Promise<UserResponseDto[]>;
-    updateOne(): Promise<void>;
+    findUser(id: string): Promise<UserResponseDto>;
+    findAllUsers(filter: Filter, take: number, skip: number): Promise<UserResponseDto[]>;
+    updateUser(id: string, updateUserParams: UpdateUserInterface): Promise<{
+        id: string;
+        email: string;
+        name: string;
+        role: import(".prisma/client").$Enums.Role;
+    }>;
+    deleteUser(id: string): Promise<{
+        message: string;
+    }>;
 }
 export {};

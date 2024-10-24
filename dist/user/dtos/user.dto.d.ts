@@ -5,3 +5,6 @@ export declare class UserResponseDto {
     email: string;
     role: Role;
 }
+export declare class UpdateUserDto {
+    name?: string;
+}

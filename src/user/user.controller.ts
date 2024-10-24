@@ -1,19 +1,30 @@
-import { Controller, Get, Param, Put, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { Role } from '@prisma/client';
-import { UserResponseDto } from './dtos/user.dto';
+import { UpdateUserDto, UserResponseDto } from './dtos/user.dto';
+import { User } from './decorators/user.decorator';
+import { UserEntity } from './interface/user.interface';
+import { Roles } from 'src/decorators/roles.decorator';
 
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get('/:id')
-  async findOne(@Param('id') id: string): Promise<UserResponseDto> {
-    return this.userService.findOne(id);
+  async findUser(@Param('id') id: string): Promise<UserResponseDto> {
+    return this.userService.findUser(id);
   }
 
   @Get()
-  async findAll(
+  async findAllUsers(
     @Query('page') page?: string,
     @Query('limit') limit?: string,
     @Query('dateFrom') dateFrom?: string,
@@ -36,19 +47,22 @@ export class UserController {
     const page_ = page ? Math.max(1, parseInt(page)) : 1; // Ensure a positive page number or default to page 1
     const skip = (page_ - 1) * take;
 
-    return await this.userService.findAll(filter, take, skip);
+    return await this.userService.findAllUsers(filter, take, skip);
   }
 
   @Put('/:id')
-  async updateOne(
-    @Param('id') id: string
+  @Roles(Role.ADMIN, Role.USER)
+  async updateUser(
+    @Param('id') id: string,
+    @Body() updateUserDto: UpdateUserDto,
+    @User() user: UserEntity,
   ): Promise<UserResponseDto> {
-    return
-    // return this.userService.updateOne()
+    return this.userService.updateUser(id, updateUserDto);
   }
 
-  
-
-
-
+  @Delete('/:id')
+  @Roles(Role.ADMIN, Role.USER)
+  async deleteUser(@Param('id') id: string) {
+    return this.userService.deleteUser(id);
+  }
 }
