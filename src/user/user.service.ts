@@ -34,4 +34,12 @@ export class UserService {
       select: { id: true, name: true, email: true, role: true },
     });
   }
+
+  async updateOne(){
+    // return this.databaseService.user.update({
+    //   where: {}
+    // });
+
+    return
+  }
 }

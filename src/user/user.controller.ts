@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Param, Put, Query } from '@nestjs/common';
 import { UserService } from './user.service';
 import { Role } from '@prisma/client';
 import { UserResponseDto } from './dtos/user.dto';
@@ -7,7 +7,7 @@ import { UserResponseDto } from './dtos/user.dto';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get(':id')
+  @Get('/:id')
   async findOne(@Param('id') id: string): Promise<UserResponseDto> {
     return this.userService.findOne(id);
   }
@@ -38,4 +38,17 @@ export class UserController {
 
     return await this.userService.findAll(filter, take, skip);
   }
+
+  @Put('/:id')
+  async updateOne(
+    @Param('id') id: string
+  ): Promise<UserResponseDto> {
+    return
+    // return this.userService.updateOne()
+  }
+
+  
+
+
+
 }
