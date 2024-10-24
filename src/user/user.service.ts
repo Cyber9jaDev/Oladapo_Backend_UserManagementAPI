@@ -1,21 +1,22 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
 import { UserResponseDto } from './dtos/user.dto';
+import { UpdateUserInterface } from './interface/user.interface';
 
-interface Filter{
+interface Filter {
   createdAt?: {
     gte?: Date;
     lte?: Date;
-  },
-  dateFrom?: Date,
-  dateTo?: Date
+  };
+  dateFrom?: Date;
+  dateTo?: Date;
 }
 
 @Injectable()
 export class UserService {
   constructor(private readonly databaseService: DatabaseService) {}
 
-  async findOne(id: string): Promise<UserResponseDto> {
+  async findUser(id: string): Promise<UserResponseDto> {
     const user = await this.databaseService.user.findUnique({
       where: { id },
       select: { id: true, name: true, email: true, role: true },
@@ -26,7 +27,11 @@ export class UserService {
     return user;
   }
 
-  async findAll(filter: Filter, take: number, skip: number): Promise<UserResponseDto[]> {
+  async findAllUsers(
+    filter: Filter,
+    take: number,
+    skip: number,
+  ): Promise<UserResponseDto[]> {
     return await this.databaseService.user.findMany({
       where: filter,
       take,
@@ -35,11 +40,24 @@ export class UserService {
     });
   }
 
-  async updateOne(){
-    // return this.databaseService.user.update({
-    //   where: {}
-    // });
+  async updateUser(id: string, updateUserParams: UpdateUserInterface) {
+    const userUpdated = await this.databaseService.user.update({
+      where: { id },
+      data: { ...updateUserParams },
+    });
 
-    return
+    if(!userUpdated) throw new BadRequestException()
+
+    return userUpdated
+  }
+
+  async deleteUser(id: string){
+    const deletedUser = await this.databaseService.user.delete({
+      where: { id }
+    });
+
+    if(!deletedUser) throw new BadRequestException()
+
+    return deletedUser
   }
 }

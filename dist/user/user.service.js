@@ -16,7 +16,7 @@ let UserService = class UserService {
     constructor(databaseService) {
         this.databaseService = databaseService;
     }
-    async findOne(id) {
+    async findUser(id) {
         const user = await this.databaseService.user.findUnique({
             where: { id },
             select: { id: true, name: true, email: true, role: true },
@@ -26,13 +26,30 @@ let UserService = class UserService {
         }
         return user;
     }
-    async findAll(filter, take, skip) {
+    async findAllUsers(filter, take, skip) {
         return await this.databaseService.user.findMany({
             where: filter,
             take,
             skip,
             select: { id: true, name: true, email: true, role: true },
         });
+    }
+    async updateUser(id, updateUserParams) {
+        const userUpdated = await this.databaseService.user.update({
+            where: { id },
+            data: { ...updateUserParams },
+        });
+        if (!userUpdated)
+            throw new common_1.BadRequestException();
+        return userUpdated;
+    }
+    async deleteUser(id) {
+        const deletedUser = await this.databaseService.user.delete({
+            where: { id }
+        });
+        if (!deletedUser)
+            throw new common_1.BadRequestException();
+        return deletedUser;
     }
 };
 exports.UserService = UserService;
