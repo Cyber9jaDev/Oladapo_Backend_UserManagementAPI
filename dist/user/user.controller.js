@@ -69,7 +69,7 @@ __decorate([
 ], UserController.prototype, "findAllUsers", null);
 __decorate([
     (0, common_1.Put)('/:id'),
-    (0, roles_decorator_1.Roles)(client_1.Role.USER),
+    (0, roles_decorator_1.Roles)(client_1.Role.ADMIN, client_1.Role.USER),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __param(2, (0, user_decorator_1.User)()),
@@ -79,6 +79,7 @@ __decorate([
 ], UserController.prototype, "updateUser", null);
 __decorate([
     (0, common_1.Delete)('/:id'),
+    (0, roles_decorator_1.Roles)(client_1.Role.ADMIN, client_1.Role.USER),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

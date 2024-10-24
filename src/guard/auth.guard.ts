@@ -25,10 +25,11 @@ export class AuthGuard implements CanActivate {
       context.getClass(),
     ]);
 
+    // If no role assigned, go on and execute
     if (!requiredRoles || requiredRoles.length === 0) {
       return true;
     }
-
+    
     const request = context.switchToHttp().getRequest();
     const authHeader = request.headers.authorization;
     const token = authHeader && authHeader.split(' ')[1];

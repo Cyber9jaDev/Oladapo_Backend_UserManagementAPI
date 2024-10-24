@@ -51,7 +51,7 @@ export class UserController {
   }
 
   @Put('/:id')
-  @Roles(Role.USER)
+  @Roles(Role.ADMIN, Role.USER)
   async updateUser(
     @Param('id') id: string,
     @Body() updateUserDto: UpdateUserDto,
@@ -61,6 +61,7 @@ export class UserController {
   }
 
   @Delete('/:id')
+  @Roles(Role.ADMIN, Role.USER)
   async deleteUser(@Param('id') id: string) {
     return this.userService.deleteUser(id);
   }
