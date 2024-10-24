@@ -48,6 +48,7 @@ export class UserService {
     const userUpdated = await this.databaseService.user.update({
       where: { id },
       data: { ...updateUserParams },
+      select: { id: true, name: true, email: true, role: true },
     });
 
     if (!userUpdated) throw new BadRequestException();
