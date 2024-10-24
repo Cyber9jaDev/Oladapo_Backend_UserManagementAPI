@@ -13,5 +13,6 @@ export declare class UserService {
     constructor(databaseService: DatabaseService);
     findOne(id: string): Promise<UserResponseDto>;
     findAll(filter: Filter, take: number, skip: number): Promise<UserResponseDto[]>;
+    updateOne(): Promise<void>;
 }
 export {};

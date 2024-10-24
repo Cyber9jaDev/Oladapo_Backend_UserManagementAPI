@@ -38,10 +38,13 @@ let UserController = class UserController {
         const skip = (page_ - 1) * take;
         return await this.userService.findAll(filter, take, skip);
     }
+    async updateOne(id) {
+        return;
+    }
 };
 exports.UserController = UserController;
 __decorate([
-    (0, common_1.Get)(':id'),
+    (0, common_1.Get)('/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -58,6 +61,13 @@ __decorate([
     __metadata("design:paramtypes", [String, String, String, String, String]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Put)('/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "updateOne", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [user_service_1.UserService])

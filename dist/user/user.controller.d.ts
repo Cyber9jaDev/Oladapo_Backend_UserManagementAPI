@@ -6,4 +6,5 @@ export declare class UserController {
     constructor(userService: UserService);
     findOne(id: string): Promise<UserResponseDto>;
     findAll(page?: string, limit?: string, dateFrom?: string, dateTo?: string, role?: Role): Promise<UserResponseDto[]>;
+    updateOne(id: string): Promise<UserResponseDto>;
 }

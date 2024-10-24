@@ -34,6 +34,9 @@ let UserService = class UserService {
             select: { id: true, name: true, email: true, role: true },
         });
     }
+    async updateOne() {
+        return;
+    }
 };
 exports.UserService = UserService;
 exports.UserService = UserService = __decorate([
