@@ -24,29 +24,26 @@ git clone https://github.com/Cyber9jaDev/Oladapo_Backend_UserManagementAPI.git
 ```bash
 cd <repository-name>
 ```
-###  Install Dependencies
+###  2. Install Dependencies
 ```bash
 npm install
 ```
 
-### Environment Setup
-1.  Create a .env file in the root directory and add the following variables:
-
-# Database
-<!-- Database Setup -->
-1.  Create a new project in Supabase
-2.  Get your database connection string from Supabase dashboard
-3.  Update the DATABASE_URL in your .env file
-
+### 3. Environment Setup
+- Create a new project on Supabase
+- Get your database connection string from Supabase dashboard
+- Create a .env file in the root directory and add the following variables
 ```bash
 DATABASE_URL=postgresql://[username]:[your_password]@[YOUR-PROJECT-REF].supabase.com:5432/postgres
 ```
+```bash
+JWT_KEY=`key`
+```
+```bash
+JWT_LIFETIME='1d'
+```
 
-# JWT
-1.  JWT_KEY=[JWT_KEY]
-2.  JWT_LIFETIME=[1d]
-
-## Prisma Setup
+### Prisma Setup
 ```bash
 npx prisma generate
 ```
