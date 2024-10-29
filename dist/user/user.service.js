@@ -27,12 +27,15 @@ let UserService = class UserService {
         return user;
     }
     async findAllUsers(filter, take, skip) {
-        return await this.databaseService.user.findMany({
+        const users = await this.databaseService.user.findMany({
             where: filter,
             take,
             skip,
             select: { id: true, name: true, email: true, role: true },
         });
+        if (users.length === 0)
+            throw new common_1.NotFoundException('Users not found');
+        return users;
     }
     async updateUser(id, updateUserParams, user) {
         const userUpdated = await this.databaseService.user.update({

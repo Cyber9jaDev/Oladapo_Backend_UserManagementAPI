@@ -1,5 +1,5 @@
 {
-  "name": "Oladapo_Backend_UserManagementAPI",
+  "name": "oladapo_backend_user_management_api",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -62,7 +62,10 @@
       "json",
       "ts"
     ],
-    "rootDir": "src",
+    "rootDir": "./",
+    "modulePaths": [
+      "<rootDir>"
+    ],
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"

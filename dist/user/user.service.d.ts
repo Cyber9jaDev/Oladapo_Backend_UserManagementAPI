@@ -15,9 +15,9 @@ export declare class UserService {
     findUser(id: string): Promise<UserResponseDto>;
     findAllUsers(filter: Filter, take: number, skip: number): Promise<UserResponseDto[]>;
     updateUser(id: string, updateUserParams: UpdateUserInterface, user: UserEntity): Promise<{
-        name: string;
         id: string;
         email: string;
+        name: string;
         role: import(".prisma/client").$Enums.Role;
     }>;
     deleteUser(id: string): Promise<{

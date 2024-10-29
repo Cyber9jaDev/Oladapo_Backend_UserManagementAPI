@@ -36,15 +36,23 @@ export class UserService {
     take: number,
     skip: number,
   ): Promise<UserResponseDto[]> {
-    return await this.databaseService.user.findMany({
+    const users = await this.databaseService.user.findMany({
       where: filter,
       take,
       skip,
       select: { id: true, name: true, email: true, role: true },
     });
+
+    if (users.length === 0) throw new NotFoundException('Users not found');
+
+    return users;
   }
 
-  async updateUser(id: string, updateUserParams: UpdateUserInterface, user: UserEntity) {
+  async updateUser(
+    id: string,
+    updateUserParams: UpdateUserInterface,
+    user: UserEntity,
+  ) {
     const userUpdated = await this.databaseService.user.update({
       where: { id },
       data: { ...updateUserParams },
