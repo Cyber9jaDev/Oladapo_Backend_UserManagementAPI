@@ -33,7 +33,7 @@ let UserService = class UserService {
             skip,
             select: { id: true, name: true, email: true, role: true },
         });
-        if (users.length === 0)
+        if (!users.length)
             throw new common_1.NotFoundException('Users not found');
         return users;
     }

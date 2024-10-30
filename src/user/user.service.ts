@@ -43,7 +43,7 @@ export class UserService {
       select: { id: true, name: true, email: true, role: true },
     });
 
-    if (users.length === 0) throw new NotFoundException('Users not found');
+    if (!users.length) throw new NotFoundException('Users not found');
 
     return users;
   }
